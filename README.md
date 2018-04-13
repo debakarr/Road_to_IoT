@@ -18,11 +18,11 @@ Using this one can access any electronic appliance in his/her home from anywhere
 
 #### Server room critical temperature notifier
 
-**The notifier contains three level of notification**
+* **The notifier contains three level of notification**
 
-* When the temperature is above 30 °C [High: Level 1 notification].
-* When the temperature is above 50 °C [Very high: Level 2 notification].
-* When the temperature is above 100 °C [Critical: Level 3 notification].
+	* When the temperature is above 30 °C [High: Level 1 notification].
+	* When the temperature is above 50 °C [Very high: Level 2 notification].
+	* When the temperature is above 100 °C [Critical: Level 3 notification].
 
 ### Hardware required
 
