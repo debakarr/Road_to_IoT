@@ -75,6 +75,8 @@ Similar way we have wrote code for the email notifier but here there is no subsc
 
 ![](img/FlowForHomeAutomation.png)
 
+![](img/ExampleOfHomeAutomationDashboard.png)
+
 
 * **For Server Room Critical Temperature Notifier**
 
