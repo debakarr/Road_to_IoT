@@ -1,11 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "DHT.h"
-#define DHTPIN 14
+#define DHTPIN D5
 #define DHTTYPE DHT11 
 
-const char* ssid = "Provakar_Wifi-Network";
-const char* password = "linkingparkcool";
+const char* ssid = "Android AP";
+const char* password = "myworld12";
 const char* mqtt_server = "iot.eclipse.org";
 
 WiFiClient espClient;
@@ -74,9 +74,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("LED 1 Off");
     digitalWrite(D2, LOW);
   }
-
-  
-
 }
 
 void reconnect() {
@@ -101,7 +98,8 @@ void loop() {
   client.loop();
 
   long now = millis();
-//  float t = dht.readTemperature();
+  float t = dht.readTemperature();
+  float h = dht.readHumidity();
 //  
 //  if (isnan(t)) {
 //    Serial.println("Failed to read from DHT sensor!");
@@ -114,11 +112,11 @@ void loop() {
   
   if (now - lastMsg > 2000) {
     lastMsg = now;
-    float temperature = random(25, 30);
+    //float temperature = random(25, 30);
     float humidity = random(55, 60);
     //Serial.print("Publish message: ");
     //Serial.println(msg);
-    client.publish("baka/room1/temp", String(temperature).c_str());
-    client.publish("baka/room1/humid", String(humidity).c_str());
+    client.publish("baka/room1/temp", String(t).c_str());
+    client.publish("baka/room1/humid", String(h).c_str());
   }
 }
