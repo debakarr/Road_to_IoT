@@ -9,7 +9,7 @@ Nowadays Internet of Things (IoT) has become a very hot topic. We can use it to 
 
 ### Designing Idea of the Product
 
-This repository contains 3 Products altogether. Title for each of them is "Home Automation using MQTT", "Visualizing the temperature and Humadity using gauge and chart", and "Server room critical temperature notifier".
+This repository contains 3 Products altogether. Title for each of them is "Home Automation using MQTT", "Visualizing the temperature and humidity using gauge and chart", and "Server room critical temperature notifier".
 
 ***
 
@@ -19,7 +19,7 @@ With coming generation come more busy schedule and this sometime lead to the fac
 
 ***
 
-#### Visualizing the temperature and Humadity using gauge and chart
+#### Visualizing the temperature and humidity using gauge and chart
 
 **Features:**
 * Contains switch for 2 lamps.
@@ -55,15 +55,23 @@ With coming generation come more busy schedule and this sometime lead to the fac
 
 ***
 
-### Algorithm Flow Chart for Home Automation and Visualization of temperature and humadity
+### Algorithm - Flow Chart 
+
+* **For Home Automation and Visualization of temperature and humidity**
 
 ![](img/HomeAutomation.png) 
+
+Here the NodeMCU is being programmed using Arduino IDE to control the LED. We connected the *ESP8266* to the Wifi using *SSID* and *password* of our home network. Here the WiFi works as a gateway for data transmission. For this we have a function called *setup_wifi()*.
+
+Also the same ESP8266 is used as a MQTT client subcribing to the topic which is used to control the LED (electrical appliance). Here we are using a function called *setCallback()*. If a client is subscribed to a topic, then a *callback function* must be defined which is called when a new message arrive at the client.
+
+After this we enter the *loop* where we check whether we are connected to the client. Basically we are checking if we have a connection with the MQTT broker. If not then we keep retrying else we set an interval (say 2 second). With this interval we publish the temperature and humidity reading to their respective topics. Also if some message is recieve in the subscribed topic then we have a check and depending on the check the LED is turned ON/OFF. This process if continue infinitely.
 
 ***
 
 ### Node-RED Flow
 
-* **For Home Automation and Visualization of temperature and humadity**
+* **For Home Automation and Visualization of temperature and humidity**
 
 ![](img/FlowForHomeAutomation.png) 
 
