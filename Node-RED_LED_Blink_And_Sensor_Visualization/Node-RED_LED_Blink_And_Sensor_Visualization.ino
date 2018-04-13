@@ -1,11 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "DHT.h"
-#define DHTPIN D7
+#define DHTPIN 14
 #define DHTTYPE DHT11 
 
-const char* ssid = "Android AP";
-const char* password = "myworld12";
+const char* ssid = "Provakar_Wifi-Network";
+const char* password = "linkingparkcool";
 const char* mqtt_server = "iot.eclipse.org";
 
 WiFiClient espClient;
@@ -54,10 +54,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 
-  float t = dht.readTemperature();
-  Serial.print("Temperature = ");
-  Serial.println(t);
-
   if (payload[0] == '1'){
     Serial.println("Glow LED inbuit");
     digitalWrite(D4, LOW);   
@@ -74,6 +70,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("LED 1 Off");
     digitalWrite(D2, LOW);
   }
+
+  
+
 }
 
 void reconnect() {
@@ -97,26 +96,25 @@ void loop() {
   }
   client.loop();
 
-  long now = millis();
-  float t = dht.readTemperature();
-  float h = dht.readHumidity();
-//  
-//  if (isnan(t)) {
-//    Serial.println("Failed to read from DHT sensor!");
-//    return;
-//   }
-
 //  if(t>30.0){
 //    client.publish("baka/room1/triggerAC", "1");
 //  }
   
-  if (now - lastMsg > 2000) {
-    lastMsg = now;
-    //float temperature = random(25, 30);
-    float humidity = random(55, 60);
-    //Serial.print("Publish message: ");
-    //Serial.println(msg);
-    client.publish("baka/room1/temp", String(t).c_str());
-    client.publish("baka/room1/humid", String(h).c_str());
+  float temperature = dht.readTemperature();
+  float humidity = dht.readHumidity();
+  if (isnan(t)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
   }
+  else{
+      Serial.print("Temperature = ");
+      Serial.println(temperature);
+  }
+
+  Serial.print("Humidity = ");
+  Serial.println(humidity);
+
+  client.publish("baka/room1/temp", String(temperature).c_str());
+  client.publish("baka/room1/humid", String(humidity).c_str());
+  delay(2000);
 }
