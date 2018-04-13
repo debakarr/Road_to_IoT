@@ -8,7 +8,7 @@ const char* ssid = "Provakar_Wifi-Network";
 const char* password = "linkingparkcool";
 const char* mqtt_server = "iot.eclipse.org";
 
-float t = 27.0;
+//float t = 27.0;
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -64,8 +64,8 @@ void loop() {
   }
   client.loop();
 
-  //float t = dht.readTemperature();
-  t++;
+  float t = dht.readTemperature();
+  //t++;
   
   if (isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
