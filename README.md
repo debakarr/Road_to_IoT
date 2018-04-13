@@ -20,6 +20,19 @@ Using this one can access any electronic appliance in his/her home from anywhere
 
 **The notifier contains three level of notification**
 
-* When the temperature is above 30 °C [High; Level 1 notification].
+* When the temperature is above 30 °C [High: Level 1 notification].
 * When the temperature is above 50 °C [Very high: Level 2 notification].
 * When the temperature is above 100 °C [Critical: Level 3 notification].
+
+### Hardware required
+
+* [LoLin NodeMCU V3](https://www.amazon.in/Centiot-ESP8266-NodeMCU-Development-Board/dp/B01M98LHT4)
+* [840 Points Bread Board](https://www.amazon.in/Generic-Elementz-Solderless-Piecesb-Circuit/dp/B00MC1CCZQ)
+* LED
+* [DHT11](https://www.amazon.in/KitsGuru-Module-Temperature-Humidity-Arduino/dp/B00YCF0NMY)
+
+### Software stack
+
+* Arduino IDE v1.8.5
+* MQTTBox v0.2.1
+* Node-RED v0.18.4
