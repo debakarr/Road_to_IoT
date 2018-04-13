@@ -1,6 +1,10 @@
 # Road_to_IoT
 Collection of Arduino Sketches, I wrote after understanding the basics. Starting from LED blink ("Hello World" for ES) to glowing a bulb through Intranet (using WiFi) to many more...
 
+### Abstract
+
+Nowadays Internet of Things (IoT) has become a very hot topic. We can use it to control objects connected to the *Internet*, thereafter enabling us to *collect and exchange data* between objects. With it expansion in different field out of whcih *Home Automation* is one trend which is one step ahead toward *smart cities*. In the proposed project(s) a system is developed which is control via *MQTT protocol*, which is a lightweight protocol for IoT. Using which we tried to achieve things like *controlling appliance from distance, generating alerts* based on the data collected. *NodeMCU* is used as a processor connecting different divices via *WiFi* channel. We tried to create a home environment and tested our prototype. First we tried it using HTML web page and then moved to application such as *MQTTBox* and *Node-RED dashboard* in later part. 
+
 ### Designing Idea of the Product
 
 This repository contains 3 Products altogether. Title for each of them is "Home Automation using MQTT", "Visualizing the temperature and Humadity using gauge and chart", and "Server room critical temperature notifier".
@@ -67,3 +71,4 @@ Using this one can access any electronic appliance in his/her home from anywhere
 ![](img/FlowForServerRoomTemperatureNotifier.png)
 
 ***
+
