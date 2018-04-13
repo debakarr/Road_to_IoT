@@ -84,6 +84,6 @@ After this we enter the *loop* where we check whether we are connected to the cl
 
 ### Demo
 
-* [Home Automation Demo 2](https://youtu.be/psBkoC06jaI)
-* [Home Automation Demo 1](https://youtu.be/QRHAILX0dis)
-* [Demo Server Room Notification](https://youtu.be/XaK7TDDK84Q)
+* [![Home Automation Demo 1](https://img.youtube.com/vi/QRHAILX0dis/maxresdefault.jpg)](https://youtu.be/QRHAILX0dis)
+* [![Home Automation Demo 2](https://img.youtube.com/vi/psBkoC06jaI/maxresdefault.jpg)](https://youtu.be/psBkoC06jaI)
+* [![Demo Server Room Notification](https://img.youtube.com/vi/XaK7TDDK84Q/maxresdefault.jpg)](https://youtu.be/XaK7TDDK84Q)
