@@ -40,10 +40,10 @@ With coming generation come more busy schedule and this sometime lead to the fac
 
 ### Hardware required
 
-* [LoLin NodeMCU V3](https://www.amazon.in/Centiot-ESP8266-NodeMCU-Development-Board/dp/B01M98LHT4): It is a Development Kit based on ESP8266, integates GPIO, PWM, IIC, 1-Wire and ADC all in one board. [Documentation](https://nodemcu.readthedocs.io/en/master/)
+* [LoLin NodeMCU V3](https://www.amazon.in/Centiot-ESP8266-NodeMCU-Development-Board/dp/B01M98LHT4): It is a Development Kit based on ESP8266, integates GPIO, PWM, IIC, 1-Wire and ADC all in one board. **[[Documentation](https://nodemcu.readthedocs.io/en/master/)]**
 * [840 Points Bread Board](https://www.amazon.in/Generic-Elementz-Solderless-Piecesb-Circuit/dp/B00MC1CCZQ): Used to temporary prototype.
 * LED: Used as a replacement for original electrical appliance.
-* [DHT11](https://www.amazon.in/KitsGuru-Module-Temperature-Humidity-Arduino/dp/B00YCF0NMY): Digital temperature and humidity sensor. [Documentation](https://akizukidenshi.com/download/ds/aosong/DHT11.pdf)
+* [DHT11](https://www.amazon.in/KitsGuru-Module-Temperature-Humidity-Arduino/dp/B00YCF0NMY): Digital temperature and humidity sensor. **[[Documentation](https://akizukidenshi.com/download/ds/aosong/DHT11.pdf)]**
 
 ***
 
@@ -57,8 +57,6 @@ With coming generation come more busy schedule and this sometime lead to the fac
 
 ### Algorithm - Flow Chart 
 
-* **For Home Automation and Visualization of temperature and humidity**
-
 ![](img/HomeAutomation.png) 
 
 Here the NodeMCU is being programmed using Arduino IDE to control the LED. We connected the *ESP8266* to the Wifi using *SSID* and *password* of our home network. Here the WiFi works as a gateway for data transmission. For this we have a function called *setup_wifi()*.
@@ -67,19 +65,22 @@ Also the same ESP8266 is used as a MQTT client subcribing to the topic which is 
 
 After this we enter the *loop* where we check whether we are connected to the client. Basically we are checking if we have a connection with the MQTT broker. If not then we keep retrying else we set an interval (say 2 second). With this interval we publish the temperature and humidity reading to their respective topics. Also if some message is recieve in the subscribed topic then we have a check and depending on the check the LED is turned ON/OFF. This process if continue infinitely.
 
+Similar way we have wrote code for the email notifier but here there is no subscriber. So we only have a publisher which continuosly publish temperature at a particular topic. This temperature then can be check and accordingly email will be send.
+
 ***
 
-### Node-RED Flow
+### Node-RED Flow and Dashboard
 
 * **For Home Automation and Visualization of temperature and humidity**
 
-![](img/FlowForHomeAutomation.png) 
+![](img/FlowForHomeAutomation.png)
 
 
 * **For Server Room Critical Temperature Notifier**
 
 ![](img/FlowForServerRoomTemperatureNotifier.png)
 
+Here we have a MQTTBroker which recieves message from the publisher (reading of temperature through DHT11 sensor). Now we read the recieved temperture reading and act accordingly. We have passed the reading through a switch which check three condition in sequence whether the temperature is above 100 °C, 50 °C or 30 °C. If any of these condition is true then we pass the signal through a *rate limiter* that keep a check that not more than 1 email is send per hour. This then passes through a function node, where we format the mail title and body which is to be send to the authority. Finally the mail is send (if it passes all the previous nodes).
 ***
 
 ### Demo (click on the image to get redirect to YouTube)
