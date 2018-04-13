@@ -84,6 +84,12 @@ After this we enter the *loop* where we check whether we are connected to the cl
 
 ### Demo
 
-* [![Home Automation Demo 1](https://img.youtube.com/vi/QRHAILX0dis/maxresdefault.jpg)](https://youtu.be/QRHAILX0dis)
-* [![Home Automation Demo 2](https://img.youtube.com/vi/psBkoC06jaI/maxresdefault.jpg)](https://youtu.be/psBkoC06jaI)
-* [![Demo Server Room Notification](https://img.youtube.com/vi/XaK7TDDK84Q/maxresdefault.jpg)](https://youtu.be/XaK7TDDK84Q)
+* **For Home Automation and Visualization of temperature and humidity**
+
+[![Home Automation Demo 1](https://img.youtube.com/vi/QRHAILX0dis/maxresdefault.jpg)](https://youtu.be/QRHAILX0dis)
+
+[![Home Automation Demo 2](https://img.youtube.com/vi/psBkoC06jaI/maxresdefault.jpg)](https://youtu.be/psBkoC06jaI)
+
+* **For Server Room Critical Temperature Notifier**
+
+[![Demo Server Room Notification](https://img.youtube.com/vi/XaK7TDDK84Q/maxresdefault.jpg)](https://youtu.be/XaK7TDDK84Q)
