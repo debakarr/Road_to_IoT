@@ -61,6 +61,9 @@ Using this one can access any electronic appliance in his/her home from anywhere
 
 ![](img/FlowForHomeAutomation.png) 
 
+
+* **For Server Room Critical Temperature Notifier**
+
 ![](img/FlowForServerRoomTemperatureNotifier.png)
 
 ***
