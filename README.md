@@ -82,7 +82,7 @@ After this we enter the *loop* where we check whether we are connected to the cl
 
 ***
 
-### Demo
+### Demo (click on the image to get redirect to YouTube)
 
 * **For Home Automation and Visualization of temperature and humidity**
 
