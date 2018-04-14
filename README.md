@@ -55,6 +55,72 @@ With coming generation come more busy schedule and this sometime lead to the fac
 
 ***
 
+### Technological Background
+
+* **OSI Layer**
+
+The Open Systems Interconnect (OSI) is a 7 layer reference model developed by the International Organization for Standardization (ISO). It describes how information is moved from one application program running on a networked computer to an application program running on another networked computer.
+
+Below we can see the 7 layers starting from *Physical* layer all upto *Application* layer and their function.
+
+![](http://mycomsats.com/wp-content/uploads/2012/05/image91.png)
+
+* **TCP/IP model**
+
+In Spite of having OSI layer we do not use it as because it is totally a theoretical concept have a very little practical implementation.
+
+By the time OSI layer was fully introduce people started using another model called *TCP/IP* model. The reason being that OSI layer is much more complex, also it emphasis more on data integrity (which is not require by many applications). 
+
+TCP/IP model contains 5 layers. The top 3 layers of OSI model (Session, Presentation and Application layers) is combined in TCP/IP model.
+
+![](https://www.cs.nmsu.edu/~istrnad/cs480/lecture_notes/tcp.gif)
+
+* **IoT Architecture**
+
+![](img/IoTArchirtecture.png)
+
+IoT architecture consist of 4 main part as depicted in the figure. Sensors in IoT device can either access the data or access it via a gateway.
+
+For different kind of applications we have different kind of sensors such as temperature, humidity, force, ulta sonic etc.
+
+Gateway can be either wired or wireless. One gateway can handle multiple sensors. Some widely use wireless technologies are 6LoWPAN, RFID, NFC etc. Gateway communicate with cloud using some backboned wired or wireless communication like WiFi, Fibre etc.
+
+With increasing demand, the amount of IoT devices are growing day by day and thus to fulfil this requirement IoT supports both IPv4 as well as IPv6 protocols.
+
+In application layer we just do the processing of data at the cloud to get the useful insights. Here we might use any protocol according to our use case. Some protocol used for IoT based devices are MQTT, CoAP, AMQP etc.
+
+* **Message Queuing Telemetry Transport (MQTT)**
+
+HTTP is most widely used protocol all over the world but due to its heavyweight property it is generally not suited for IoT based device. Here come MQTT for rescue. 
+
+We know that most of the IoT based devices are not based on web application so it better not to use HTTP. MQTT is a data centric protocol whereas HTTP is a document centric protocol. MQTT is lightweight protocol which used publish/subscribe model, making it a perfect choice for resource-constrained devices.
+
+MQTT is much more faster as compare to HTTP. It ensures high delivery guarantee with something called Quality of Services (QoS).
+
+There are three levels of QoS:
+
+1) QoS 0: at most once. It guarantees a best effort delivery. Here the message is not acknowledged by the receiver and not store by the sender again to redeliver. Sometime this is called "fire and forget".
+
+2) QoS 1: at least once. This guarantees that the message will be delivered at least once.
+
+3) QoS 2: exactly once. Here it is guaranteed that the message is received by the receiver only once.
+
+More detailed explanation of QoS could be found [here](https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels).
+
+**MQTT Publish/Subscribe Architecture**
+
+![](https://www.hivemq.com/wp-content/uploads/Screen-Shot-2014-10-22-at-12.21.07.png)
+
+Here the client (publisher) tries to **connect** to the server. After the connection is establish, the publisher **publish** message to the **broker** on certain **topic**. There are several client (subscribers) who are **subscribed** to topic of their interest. Whenever there is a new message in some topic, then the broker send the message to only one who have subscribed to that particular topic.
+
+As already mention MQTT is ideal protocol for contrained networks. MQTT control packet consists of three parts, a fixed header, variable header and **payload**. Each packey has a 2 byte fixed header but not all packet have variable header or payload. A payload of up to 256 MB could be attached in the packet. Thus having a samll header makes it an appropriate protocol for IoT.
+
+MQTT also provides the option of Last will & Testament and Retained messages. That means in case of unexpected disconnection of client all the subscriber will get the mesage from the broker.
+
+For more on MQTT , you could visit there [official site](http://mqtt.org/).
+
+***
+
 ### Algorithm - Flow Chart 
 
 ![](img/HomeAutomation.png) 
@@ -96,5 +162,3 @@ Here we have a MQTT Broker which receives message from the publisher (reading of
 * **For Server Room Critical Temperature Notifier**
 
 [![Demo Server Room Notification](https://img.youtube.com/vi/XaK7TDDK84Q/maxresdefault.jpg)](https://youtu.be/XaK7TDDK84Q)
-
-
