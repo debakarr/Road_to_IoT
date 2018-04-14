@@ -22,6 +22,7 @@ With coming generation come more busy schedule and this sometime lead to the fac
 #### Visualizing the temperature and humidity using gauge and chart
 
 **Features:**
+
 * Contains switch for 2 lamps.
 * Fan can be automated depending on the temperature.
 * Visualization of Temperature and Humidity using Gauge and Chart.
