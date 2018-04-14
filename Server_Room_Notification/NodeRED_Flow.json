@@ -1,0 +1,252 @@
+[
+    {
+        "id": "a60fb1f5.9ff87",
+        "type": "tab",
+        "label": "Server Room Critical Temperature Notifier",
+        "disabled": true,
+        "info": "**This flow is made to notify by email the authority whenever the temperature of server room is above certain level.**\n\n#### The notifier contains three level of notification\n\n* When the temperature is above 30 °C [High; Level 1 notification].\n* When the temperature is above 50 °C [Very high: Level 2 notification].\n* When the temperature is above 100 °C [Critical: Level 3 notification]."
+    },
+    {
+        "id": "3fb021d7.e9eade",
+        "type": "mqtt in",
+        "z": "a60fb1f5.9ff87",
+        "name": "Server Room Temperature",
+        "topic": "baka/serverRoom/critical",
+        "qos": "0",
+        "broker": "33d91554.a2a7ca",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "8efb7999.db3aa8",
+                "68a01d6d.471904"
+            ]
+        ]
+    },
+    {
+        "id": "8efb7999.db3aa8",
+        "type": "switch",
+        "z": "a60fb1f5.9ff87",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "100",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "30",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": true,
+        "outputs": 3,
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "ddacd9a6.eb3618"
+            ],
+            [
+                "33f66dc3.70b7a2"
+            ],
+            [
+                "580640a3.d5bf2"
+            ]
+        ],
+        "outputLabels": [
+            "Critical",
+            "Very high",
+            "High"
+        ]
+    },
+    {
+        "id": "33f66dc3.70b7a2",
+        "type": "delay",
+        "z": "a60fb1f5.9ff87",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "a9d2e763.43e2c8"
+            ]
+        ]
+    },
+    {
+        "id": "a9d2e763.43e2c8",
+        "type": "function",
+        "z": "a60fb1f5.9ff87",
+        "name": "Very High",
+        "func": "msg = {\n    payload : \"The temperature at server room is very high.\\n Date: \" + Date().toString() + \"\\nTemperature: \" + msg.payload + \"°C\",\n    topic : \"Server Room Temperature Very High!\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "4d492857.763d98",
+                "b30b40f0.964cb"
+            ]
+        ]
+    },
+    {
+        "id": "4d492857.763d98",
+        "type": "e-mail",
+        "z": "a60fb1f5.9ff87",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "name": "allinonedibakar@gmail.com",
+        "dname": "Mail to",
+        "x": 790,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1492e8a8.0f0687",
+        "type": "function",
+        "z": "a60fb1f5.9ff87",
+        "name": "Critical",
+        "func": "msg = {\n    payload : \"The temperature at server room is Critical. \\nDate: \" + Date().toString() + \"\\nTemperature: \" + msg.payload + \"°C\",\n    topic : \"Server Room Temperature Critical!!!\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "b30b40f0.964cb",
+                "4d492857.763d98"
+            ]
+        ]
+    },
+    {
+        "id": "8d2dc468.2aff18",
+        "type": "function",
+        "z": "a60fb1f5.9ff87",
+        "name": "High",
+        "func": "msg = {\n    payload : \"The temperature at server room has rise above normal.\\n Date: \" + Date().toString() + \"\\nTemperature: \" + msg.payload + \"°C\",\n    topic : \"Server Room Temperature High!\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "b30b40f0.964cb",
+                "4d492857.763d98"
+            ]
+        ]
+    },
+    {
+        "id": "580640a3.d5bf2",
+        "type": "delay",
+        "z": "a60fb1f5.9ff87",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "8d2dc468.2aff18"
+            ]
+        ]
+    },
+    {
+        "id": "ddacd9a6.eb3618",
+        "type": "delay",
+        "z": "a60fb1f5.9ff87",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "1492e8a8.0f0687"
+            ]
+        ]
+    },
+    {
+        "id": "b30b40f0.964cb",
+        "type": "debug",
+        "z": "a60fb1f5.9ff87",
+        "name": "Mail",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "68a01d6d.471904",
+        "type": "debug",
+        "z": "a60fb1f5.9ff87",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 290,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "33d91554.a2a7ca",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Eclipse",
+        "broker": "iot.eclipse.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    }
+]
