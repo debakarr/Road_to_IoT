@@ -65,6 +65,8 @@ Below we can see the 7 layers starting from *Physical* layer all upto *Applicati
 
 ![](http://mycomsats.com/wp-content/uploads/2012/05/image91.png)
 
+***
+
 * **TCP/IP model**
 
 In Spite of having OSI layer we do not use it as because it is totally a theoretical concept have a very little practical implementation.
@@ -74,6 +76,8 @@ By the time OSI layer was fully introduce people started using another model cal
 TCP/IP model contains 5 layers. The top 3 layers of OSI model (Session, Presentation and Application layers) is combined in TCP/IP model.
 
 ![](https://www.cs.nmsu.edu/~istrnad/cs480/lecture_notes/tcp.gif)
+
+***
 
 * **IoT Architecture**
 
@@ -88,6 +92,8 @@ Gateway can be either wired or wireless. One gateway can handle multiple sensors
 With increasing demand, the amount of IoT devices are growing day by day and thus to fulfil this requirement IoT supports both IPv4 as well as IPv6 protocols.
 
 In application layer we just do the processing of data at the cloud to get the useful insights. Here we might use any protocol according to our use case. Some protocol used for IoT based devices are MQTT, CoAP, AMQP etc.
+
+***
 
 * **Message Queuing Telemetry Transport (MQTT)**
 
